@@ -1,27 +1,24 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-# focus-chef
-A Gamified To Do list for 411
-=======
->>>>>>> 8e25b4d
-# React + Vite
+# FocusChef
+Productivity Application for Task Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FocusChef is a web-based task management tool designed to minimize distractions during deep work sessions. This repository contains the Phase 1 infrastructure and initial deployment.
 
-Currently, two official plugins are available:
+## Project URLs
+- **Production URL:** https://focuschef.web.app
+- **GitHub Repository:** https://github.com/CaiWilson16/focus-chef
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technical Specifications
+- **Framework:** React 19 (Vite)
+- **Styling:** Tailwind CSS 4.0
+- **Icons:** Lucide-React
+- **Backend:** Firebase (Hosting, Firestore, and Security Rules)
 
-## React Compiler
+## Phase 1 Implementation Details
+The initial phase of this project involved:
+1. Initializing the React application using the Vite build tool.
+2. Configuring Firebase Hosting with a multi-site alias to support the 'focuschef' domain.
+3. Implementing basic task 'Prep' and 'Cook' logic with an intentional hidden-timer UI to reduce clock-watching.
+4. Establishing a deployment pipeline from the local environment to the cloud.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-<<<<<<< HEAD
-=======
->>>>>>> 7a83cfc (Initial commit: FocusChef project structure)
->>>>>>> 8e25b4d
+## Author and Environment
+**Developer:** Cai Wilson
