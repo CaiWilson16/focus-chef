@@ -13,6 +13,7 @@ import {
 import {
   getDailyQuestion, getTodayEntry, saveTodayEntry
 } from './foodForThought';
+import { getStreak, updateStreak, StreakData } from './streak';
 
 interface Plate {
   id: string;
@@ -32,15 +33,12 @@ const CLOCK_IN_GREETINGS = [
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
-
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
-
   const [showFoodForThought, setShowFoodForThought] = useState<boolean>(false);
   const [dailyQuestion, setDailyQuestion] = useState<string>('');
   const [journalResponse, setJournalResponse] = useState<string>('');
   const [todayEntry, setTodayEntry] = useState<string | null>(null);
   const [journalSaved, setJournalSaved] = useState<boolean>(false);
-
   const [task, setTask] = useState<string>('');
   const [goal, setGoal] = useState<number>(30);
   const [plates, setPlates] = useState<Plate[]>([]);
@@ -48,13 +46,12 @@ export default function App() {
   const [secondsLeft, setSecondsLeft] = useState<number>(0);
   const [isCooking, setIsCooking] = useState<boolean>(false);
   const [isOvertime, setIsOvertime] = useState<boolean>(false);
-
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState<string>('');
   const [editGoal, setEditGoal] = useState<number>(30);
-
   const [totalXP, setTotalXP] = useState<number>(0);
   const [chefTitle, setChefTitle] = useState<string>('Kitchen Newbie');
+  const [streak, setStreak] = useState<StreakData>({ currentStreak: 0, longestStreak: 0, lastActiveDate: '' });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -66,6 +63,8 @@ export default function App() {
         setChefTitle(rank.title);
         const entry = await getTodayEntry();
         setTodayEntry(entry);
+        const streakData = await getStreak();
+        setStreak(streakData);
       }
     });
     return () => unsubscribe();
@@ -90,7 +89,9 @@ export default function App() {
     setPlates(data);
   }
 
-  const handleClockIn = () => {
+  const handleClockIn = async () => {
+    const updatedStreak = await updateStreak();
+    setStreak(updatedStreak);
     setIsClockedIn(true);
   };
 
@@ -216,21 +217,17 @@ export default function App() {
         <div className="bg-white rounded-3xl shadow-sm border-2 border-pink-100 p-10 max-w-md w-full text-center space-y-6">
           <h2 className="text-2xl font-bold text-pink-500">🍽️ Food for Thought</h2>
           <p className="text-slate-500 italic text-sm">A little moment just for you before you go.</p>
-
           {!dailyQuestion ? (
             <p className="text-slate-400 text-sm animate-pulse">Preparing today's question...</p>
           ) : (
             <p className="text-slate-700 font-medium text-lg">{dailyQuestion}</p>
           )}
-
           {todayEntry ? (
             <div className="space-y-4">
               <div className="bg-pink-50 rounded-2xl p-4 text-slate-600 text-left">
                 {todayEntry}
               </div>
-              <p className="text-slate-400 text-sm">
-                You already reflected today — great job, Chef 💛
-              </p>
+              <p className="text-slate-400 text-sm">You already reflected today — great job, Chef 💛</p>
               <button
                 onClick={handleCloseFoodForThought}
                 className="w-full bg-pink-400 text-white font-bold py-3 rounded-xl hover:bg-pink-500 transition"
@@ -278,10 +275,9 @@ export default function App() {
     );
   }
 
-  // Clock In screen
+  // Clock in screen
   if (!isClockedIn) {
-    const randomGreeting =
-      CLOCK_IN_GREETINGS[Math.floor(Math.random() * CLOCK_IN_GREETINGS.length)];
+    const randomGreeting = CLOCK_IN_GREETINGS[Math.floor(Math.random() * CLOCK_IN_GREETINGS.length)];
     return (
       <div className="min-h-screen bg-pink-50 flex flex-col items-center justify-center text-slate-800">
         <div className="text-center space-y-6 max-w-sm px-8">
@@ -294,6 +290,7 @@ export default function App() {
               {chefTitle}
             </span>
             <span className="text-slate-400 text-sm">{totalXP} XP</span>
+            <span className="text-orange-400 font-bold text-sm">🔥 {streak.currentStreak} day streak</span>
           </div>
           <p className="text-slate-600 italic text-lg">{randomGreeting}</p>
           <button
@@ -321,11 +318,12 @@ export default function App() {
           <Utensils /> FocusChef
         </h1>
         <p className="text-slate-500 mt-2">Welcome back, Chef {user.displayName}! 👨‍🍳</p>
-        <div className="mt-2 flex justify-center items-center gap-3">
+        <div className="mt-2 flex justify-center items-center gap-4">
           <span className="bg-pink-100 text-pink-600 font-bold px-4 py-1 rounded-full text-sm">
             {chefTitle}
           </span>
           <span className="text-slate-400 text-sm">{totalXP} XP</span>
+          <span className="text-orange-400 font-bold text-sm">🔥 {streak.currentStreak} day streak</span>
         </div>
         <button
           onClick={handleClockOut}
