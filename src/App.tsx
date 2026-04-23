@@ -192,7 +192,7 @@ const GlobalStyles: React.FC = () => (
     @keyframes steamDrift { 0%,100%{opacity:0.4;transform:translateY(0)} 50%{opacity:0.9;transform:translateY(-4px)} }
     @keyframes glow { 0%,100%{opacity:0.2} 50%{opacity:0.5} }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    @keyframes bob { 0%,100%{transform:translate(-50%,-70%)} 50%{transform:translate(-50%,-76%)} }
+    @keyframes bob { 0%,100%{transform:translate(-50%,-50%)} 50%{transform:translate(-50%,-56%)} }
     @keyframes flameBreathe { 0%,100%{transform:scaleY(1) scaleX(1)} 50%{transform:scaleY(1.05) scaleX(0.95)} }
     @keyframes ticketSlam { 0% { transform: translateY(-200px) rotate(-8deg); opacity: 0; } 60% { transform: translateY(20px) rotate(2deg); opacity: 1; } 80% { transform: translateY(-10px) rotate(-1deg); } 100% { transform: translateY(0) rotate(0deg); opacity: 1; } }
     @keyframes stampDown { 0% { transform: scale(3) rotate(-25deg); opacity: 0; } 70% { transform: scale(0.9) rotate(-12deg); opacity: 1; } 100% { transform: scale(1) rotate(-12deg); opacity: 1; } }
@@ -327,7 +327,7 @@ const GlobalStyles: React.FC = () => (
 
     .fc-welcome-outer { min-height:100vh; min-height:100dvh; background:#C8834A; display:flex; flex-direction:column; padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom); }
     .fc-welcome-hero { width:100%; flex:0 0 38vh; min-height:260px; max-height:360px; position:relative; overflow:hidden; background:linear-gradient(180deg,#D89560 0%,#C8834A 60%,#A86530 100%); }
-    .fc-welcome-logo-wrap { position:absolute; top:50%; left:50%; transform:translate(-50%,-70%); z-index:5; animation:bob 4s ease-in-out infinite; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.3)); }
+    .fc-welcome-logo-wrap { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:5; animation:bob 4s ease-in-out infinite; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.3)); }
     .fc-welcome-body { background:#F5EDD8; padding:28px 24px 28px; flex:1; display:flex; flex-direction:column; justify-content:flex-start; text-align:center; max-width:440px; margin:0 auto; width:100%; }
     .fc-welcome-logo-text { font-family:'Playfair Display',serif; font-style:italic; font-size:44px; color:#5C2800; margin:0 0 4px; line-height:1; }
     .fc-welcome-logo-text span { color:#C8834A; }
