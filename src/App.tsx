@@ -192,7 +192,7 @@ const GlobalStyles: React.FC = () => (
     @keyframes steamDrift { 0%,100%{opacity:0.4;transform:translateY(0)} 50%{opacity:0.9;transform:translateY(-4px)} }
     @keyframes glow { 0%,100%{opacity:0.2} 50%{opacity:0.5} }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes bob { 0%,100%{transform:translate(-50%,-70%)} 50%{transform:translate(-50%,-76%)} }
     @keyframes flameBreathe { 0%,100%{transform:scaleY(1) scaleX(1)} 50%{transform:scaleY(1.05) scaleX(0.95)} }
     @keyframes ticketSlam { 0% { transform: translateY(-200px) rotate(-8deg); opacity: 0; } 60% { transform: translateY(20px) rotate(2deg); opacity: 1; } 80% { transform: translateY(-10px) rotate(-1deg); } 100% { transform: translateY(0) rotate(0deg); opacity: 1; } }
     @keyframes stampDown { 0% { transform: scale(3) rotate(-25deg); opacity: 0; } 70% { transform: scale(0.9) rotate(-12deg); opacity: 1; } 100% { transform: scale(1) rotate(-12deg); opacity: 1; } }
@@ -316,7 +316,7 @@ const GlobalStyles: React.FC = () => (
     .fc-fft-bg { width:100%; height:280px; background:linear-gradient(180deg,#D89560 0%,#C8834A 60%,#A86530 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; flex-shrink:0; }
     .fc-fft-bg-tiles { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size:48px 48px; }
     .fc-fft-bg-glow { position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255,210,120,0.25) 0%, transparent 70%); }
-    .fc-fft-bowl { position:relative; z-index:2; animation:bob 4s ease-in-out infinite; filter:drop-shadow(0 8px 20px rgba(0,0,0,0.25)); }
+    .fc-fft-bowl { position:relative; z-index:2; filter:drop-shadow(0 8px 20px rgba(0,0,0,0.25)); }
     .fc-fft-title { font-family:'Playfair Display',serif; font-style:italic; font-size:24px; color:#5C2800; text-align:center; margin-bottom:4px; }
     .fc-fft-subtitle { font-size:12px; color:#A07840; text-align:center; font-style:italic; margin-bottom:16px; }
     .fc-fft-question { font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:#3D1800; text-align:center; line-height:1.6; margin-bottom:16px; padding:14px; background:#FFFDF4; border:1.5px solid #D4BC8C; border-radius:8px; }
@@ -326,9 +326,9 @@ const GlobalStyles: React.FC = () => (
     .fc-fft-skip { width:100%; background:none; border:none; font-size:12px; color:#A07840; cursor:pointer; text-decoration:underline; font-family:'Nunito',sans-serif; padding:10px; }
 
     .fc-welcome-outer { min-height:100vh; min-height:100dvh; background:#C8834A; display:flex; flex-direction:column; padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom); }
-    .fc-welcome-hero { width:100%; flex:0 0 42vh; min-height:280px; max-height:380px; position:relative; overflow:hidden; background:linear-gradient(180deg,#D89560 0%,#C8834A 60%,#A86530 100%); }
-    .fc-welcome-logo-wrap { position:absolute; top:50%; left:50%; transform:translate(-50%,-55%); z-index:5; animation:bob 4s ease-in-out infinite; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.3)); }
-    .fc-welcome-body { background:#F5EDD8; padding:28px 24px 28px; flex:1; display:flex; flex-direction:column; justify-content:flex-start; text-align:center; }
+    .fc-welcome-hero { width:100%; flex:0 0 38vh; min-height:260px; max-height:360px; position:relative; overflow:hidden; background:linear-gradient(180deg,#D89560 0%,#C8834A 60%,#A86530 100%); }
+    .fc-welcome-logo-wrap { position:absolute; top:50%; left:50%; transform:translate(-50%,-70%); z-index:5; animation:bob 4s ease-in-out infinite; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.3)); }
+    .fc-welcome-body { background:#F5EDD8; padding:28px 24px 28px; flex:1; display:flex; flex-direction:column; justify-content:flex-start; text-align:center; max-width:440px; margin:0 auto; width:100%; }
     .fc-welcome-logo-text { font-family:'Playfair Display',serif; font-style:italic; font-size:44px; color:#5C2800; margin:0 0 4px; line-height:1; }
     .fc-welcome-logo-text span { color:#C8834A; }
     .fc-welcome-tag { font-size:11px; color:#A07840; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:22px; }
@@ -527,7 +527,7 @@ export default function App() {
       <div className="fc-app">
         <GlobalStyles />
         <div className="fc-welcome-outer">
-          <WelcomeHero logoSize={220} />
+          <WelcomeHero logoSize={200} />
           <div className="fc-welcome-body">
             <div className="fc-welcome-logo-text">Focus<span>Chef</span></div>
             <div className="fc-welcome-tag">Cook Your Goals</div>
@@ -544,7 +544,7 @@ export default function App() {
       <div className="fc-app">
         <GlobalStyles />
         <div className="fc-welcome-outer">
-          <WelcomeHero logoSize={200} />
+          <WelcomeHero logoSize={180} />
           <div className="fc-welcome-body">
             <div className="fc-welcome-logo-text">Focus<span>Chef</span></div>
             <div className="fc-welcome-tag">Chef's Station</div>
