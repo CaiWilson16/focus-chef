@@ -20,5 +20,11 @@ The initial phase of this project involved:
 3. Implementing basic task 'Prep' and 'Cook' logic with an intentional hidden-timer UI to reduce clock-watching.
 4. Establishing a deployment pipeline from the local environment to the cloud.
 
+## Acknowledgments
+
+
+### AI Tool Usage
+AI tools including Claude (Anthropic) were used for debugging assistance, code generation and Generating boilerplate React/TypeScript components, CSS animations, and SVG illustrations; helping interpret Vite build errors and TypeScript type errors.
+
 ## Author and Environment
 **Developer:** Cai Wilson
